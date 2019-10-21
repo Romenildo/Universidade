@@ -1,4 +1,4 @@
-from random import choice #biblioteca que gera num aleatorios
+from random import choice  #biblioteca que gera num aleatorios
 perguntas = [ ["Qual a primeira mulher a ganhar um prêmio Nobel:    \n\n a)Madre Teresa de Calcutá"+" "* 12+"c)Iréne Joliot-Curie \n b)Elizabeth Blackweel"+" "* 16+"d)Marie Curie \n" ],
 ["Qual o número mínimo de jogadores em uma partida de futebol:   \n\n a) 8"+" "* 20+"c) 9 \n b) 7"+" "* 20+"d)10 \n" ],
 ["QUal o maior animal terrestre:   \n\n a)Baleia Azul"+" "* 20+"c)Elefante africano \n b)Tubarão branco"+" "* 17+"d)Girafa \n" ],
