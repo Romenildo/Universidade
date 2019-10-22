@@ -32,7 +32,7 @@ void printar_TV(char TV[20][20],int DIMx,int DIMy){
 void mover_aux(char TV[20][20],char TV2[20][20],int DIMx,int DIMy){
     /* usado para retornar com valores das auxiliares para a matriz principal
     como utilizado em todas movimentações melhor criar uma função para isso*/
-    int i,j;
+    int i,j; 
     
     for(i=0;i<DIMx;i++){
         for(j=0;j<DIMy;j++){
