@@ -15,4 +15,4 @@ main(){
 
     printf("o dobro de %d eh %d",num,dobro(num));
 
-}
+} 
