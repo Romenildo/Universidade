@@ -1,5 +1,5 @@
 
 # **Laboratório 01**
 
-![lab01](https://github.com/Romenildo/Universidade/blob/master/Algoritmo/Projeto%20final/imagens%20%F0%9F%93%B8/LAB01.png[])
+![lab01](https://github.com/Romenildo/Universidade/blob/master/Algoritmo/Projeto%20final/imagens%20%F0%9F%93%B8/LAB01.png)
 ![lab01.1](https://github.com/Romenildo/Universidade/blob/master/Algoritmo/Projeto%20final/imagens%20%F0%9F%93%B8/LAB01.1.png)
