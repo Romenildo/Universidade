@@ -1,3 +1,6 @@
+
+/*Estruturas dentro de uma estrutura*/
+
 #include <stdio.h>
 
 typedef struct{
@@ -7,7 +10,7 @@ typedef struct{
 typedef struct{
     float n1,n2;
     char nome[30];
-    ENDER e; //e é a variavel de outra struct
+    ENDER e; //e é a variavel de outra struct a.e.num
 }ALUNO;
 
 void imprimir(ALUNO a){
@@ -19,14 +22,14 @@ void imprimir(ALUNO a){
 }
 
 void preencher(ALUNO *a){
-    setbuf(stdin,NULL);
+    setbuf(stdin,NULL);//set buf caso o programa rode 2 vezes tem que limpar o buffer
     printf("Digite o nome do aluno:");
-    gets(a->nome);
+    gets(a->nome);//apontar para uma estrutura coloca o ->
     printf("Digite a primeira nota:");
     scanf("%f",&a->n1);
     printf("Digitea segunda nota:");
     scanf("%f",&a->n2);
-    setbuf(stdin,NULL);
+    setbuf(stdin,NULL);//set buf por causa que mudou do tipo 
     printf("Digite a rua: ");
     gets(a->e.rua);
     printf("Digite o numero da  rua: ");
