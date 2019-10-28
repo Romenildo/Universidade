@@ -1,32 +1,33 @@
 #include <stdio.h>
 #include <string.h>
-#define C 101//Tamanho da palavra
-#define XXX 31 //Tamanho do significado da palavra
-#define LX 61
+#define L_DIC 101//limite tamanho dicionario
+#define L_PLVA 31 //limite tamanho da palavra
+#define L_FRSE 61//limite tamanho da frase final
 #define II 2
 
+/* Aluno: Romenildo do vale Ferreira LabP1 - manhã */
 
-void dicionario(char DIC[C][II][XXX],int q_palavras_dic){
+void dicionario(char dic[L_DIC][II][L_PLVA],int q_palavras_dic){
     //preencher o dicionario com as palavras e seus significados (ou criptografias)
 
     puts("----PREENCHER DICIONARIO----");
     for(int i=0;i<q_palavras_dic;i++){
         printf("%d- Palavra: ",i+1);
         setbuf(stdin,NULL);
-        fgets(DIC[i][0],XXX,stdin);
-        strtok(DIC[i][0], "\n");
+        fgets(dic[i][0],L_PLVA,stdin);
+        strtok(dic[i][0], "\n");
 
 
-        printf("   %s = : ",DIC[i][0]);
+        printf("   %s = : ",dic[i][0]);
         setbuf(stdin,NULL);
-        fgets(DIC[i][1],XXX,stdin);
-        strtok(DIC[i][1], "\n");
+        fgets(dic[i][1],L_PLVA,stdin);
+        strtok(dic[i][1], "\n");
     }
     puts("----------------------------");
 }
 
 
-void mensagemFinal(char MSM_final[C][LX],int q_mensagens_finais){
+void mensagemFinal(char MSM_final[L_DIC][L_FRSE],int q_mensagens_finais){
     //pedir a quantidade de mensagens que o usuario informou
 
     for(int i=0;i<q_mensagens_finais;i++){
@@ -37,7 +38,7 @@ void mensagemFinal(char MSM_final[C][LX],int q_mensagens_finais){
 }
 
 
-limpar(char aux[XXX][LX],int x, int contar){
+limpar(char aux[L_PLVA][L_FRSE],int x, int contar){
     //limpar todos os elementos do vetor auxiliar quando passar de uma frase
 
     int i,j;
@@ -52,8 +53,8 @@ limpar(char aux[XXX][LX],int x, int contar){
 }
 
 
-descriptografar(char DIC[C][II][XXX],char MSM_final[C][LX],int q_palavras_dic, int q_mensagens_finais,int rodada){
-    char aux[XXX][LX];
+descriptografar(char dic[L_DIC][II][L_PLVA],char MSM_final[L_DIC][L_FRSE],int q_palavras_dic, int q_mensagens_finais,int rodada){
+    char aux[L_PLVA][L_FRSE];
     int i,j=0,indice=0,contar=1,x=0;
     //x = contador para contar o tamanho da string da mensagem
     //contar = numero de palavras(strings) do vetor auxiliar
@@ -75,8 +76,8 @@ descriptografar(char DIC[C][II][XXX],char MSM_final[C][LX],int q_palavras_dic, i
 //-------fazer a comparação das palavras do dicionario com o auxiliar e trocar pelo signifiado-----
     for(i=0;i<q_palavras_dic;i++){
         for(j=0;j<contar;j++){
-            if(strcmp(DIC[i][0],aux[j]) == 0){
-                strcpy(aux[j],DIC[i][1]);
+            if(strcmp(dic[i][0],aux[j]) == 0){
+                strcpy(aux[j],dic[i][1]);
             }
         }
     }
@@ -94,25 +95,29 @@ descriptografar(char DIC[C][II][XXX],char MSM_final[C][LX],int q_palavras_dic, i
 main(){
 
     int i,instancias = 0, q_mensagens_finais=0,q_palavras_dic = 0;
-    char DIC[C][II][XXX],MSM_final[C][LX];
+    char dic[L_DIC][II][L_PLVA],MSM_final[L_DIC][L_PLVA];
+    system("color 02");
 
     printf("Digite a quantidade de instancias: ");scanf("%d",&instancias);
-    printf("------- INSTANCIA %d -------\n",instancias);//inutil mas...
+
 
     if(instancias > 0){
         while(instancias){
+            printf("------ INSTANCIAS = %d ------\n",instancias);//inutil mas...
             printf("Digite a quantidade de palavras do dicionario: ");scanf("%d",&q_palavras_dic);
             if(q_palavras_dic > 0 && q_palavras_dic <= 100){
-                  dicionario(DIC, q_palavras_dic);//preencher o dicionario
+                  dicionario(dic, q_palavras_dic);//preencher o dicionario
 
                 printf("Digite a quantidade de mensagens criptografadas: ");scanf("%d",&q_mensagens_finais);
                 mensagemFinal(MSM_final,q_mensagens_finais);//pedir as frases criptografadas
 
                 for(i=0;i<q_mensagens_finais;i++){
-                descriptografar(DIC,MSM_final,q_palavras_dic,q_mensagens_finais,i);
+                descriptografar(dic,MSM_final,q_palavras_dic,q_mensagens_finais,i);
                 }
             }
         --instancias;
+        system("pause");
+        system("cls");
         }
     }else
         return ;
