@@ -1,8 +1,10 @@
 #include<stdio.h>
 #include<string.h>
 
-#define Q_ALN 2     // Caso seja necessario mudar a quntidade de alunos so mudar aqui
+#define Q_ALN 20     // Caso seja necessario mudar a quntidade de alunos so mudar aqui
 #define TAM 16
+
+        /*Aluno:Romenildo do Vale Ferreira*/
 
 char *alunoSituacao(char *nome[TAM]){
     // pede as notas e verifica a situacao do aluno se APROVADO( >7) ou REPROVADO(<7)
@@ -27,6 +29,7 @@ char *alunoSituacao(char *nome[TAM]){
 
 }
 
+
 void nomesAlunos(char nomes[Q_ALN][2][16]){
     // pedir o nome dos alunos e chamar outra funcao para situacao do aluno
 
@@ -36,10 +39,9 @@ void nomesAlunos(char nomes[Q_ALN][2][16]){
         printf("NOME ");
         strupr(gets(nomes[i][0]));
         strcpy(nomes[i][1],alunoSituacao(&nomes[i][0]));
-        }
-
-
+    }
 }
+
 
 void mostrar(char nomes[Q_ALN][2][TAM]){
     //printar nome e situação de todos os alunos
@@ -51,6 +53,7 @@ void mostrar(char nomes[Q_ALN][2][TAM]){
     }
     puts("|-----------------------|");
 }
+
 
 void mostrarAP(char nomes[Q_ALN][2][TAM]){
     //mostrar somente os alunos reprovados
@@ -68,7 +71,6 @@ void mostrarAP(char nomes[Q_ALN][2][TAM]){
         printf("| NAO HA APROVADOS \n");
     }
     puts("|-----------------------|");
-
 }
 
 
@@ -88,7 +90,6 @@ void mostrarRE(char nomes[Q_ALN][2][TAM]){
         printf("| NAO HA REPROVADOS \n");
     }
     puts("|-----------------------|");
-
 }
 
 
@@ -113,8 +114,8 @@ void procurarAluno(char nomes[Q_ALN][2][TAM]){
         printf("| ALUNO NAO ENCONTRADO \n");
     }
     puts("|-----------------------|");
-
 }
+
 
 void limpar(void){
     //limpar a tela
@@ -153,8 +154,6 @@ void menuopcao2(void){
     puts("|-----------------------|");
 
 }
-
-
 
 
 main(){
