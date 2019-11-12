@@ -37,6 +37,9 @@ menu(){
                     adicionarContato();
                     lim++;
                     on = 1;
+                    if(lim>1){
+                        ordenarContatos(&ag,lim);
+                    }
                     break;
                 }else{
                     printf("\nAgenda cheia!!\n");
@@ -76,28 +79,53 @@ menu(){
             if(on == 1){
                 system("cls");
                 puts("---Grupos---");
-                puts("1-FAMILIA  2-AMIGOS 3-FAMILIA");
+                puts("1-FAMILIA  2-AMIGOS 3-TRABALHO");
                 puts("4- ESTUDOS 5-COLEGAS 6-OUTROS");
                 printf("digite: ");scanf("%d",&op2);
                 setbuf(stdin,NULL);
                 char aux[15];
                 switch(op2){
                     case 1:
-                        printf("---Grupo Familia---");
+                        printf("---Grupo Familia---\n");
                         strcpy(aux,"FAMILIA");
                         mostrarGrupo(&ag, aux);
                         system("pause");
                         break;
 
                     case 2:
+                        printf("---Grupo Amigos---\n");
+                        strcpy(aux,"AMIGOS");
+                        mostrarGrupo(&ag, aux);
+                        system("pause");
+                        break;
 
                     case 3:
+                        printf("---Grupo TRABALHO---\n");
+                        strcpy(aux,"TRABALHO");
+                        mostrarGrupo(&ag, aux);
+                        system("pause");
+                        break;
 
                     case 4:
+                        printf("---Grupo ESTUDOS---\n");
+                        strcpy(aux,"ESTUDOS");
+                        mostrarGrupo(&ag, aux);
+                        system("pause");
+                        break;
 
                     case 5:
+                        printf("---Grupo colegas---\n");
+                        strcpy(aux,"COLEGAS");
+                        mostrarGrupo(&ag, aux);
+                        system("pause");
+                        break;
 
                     case 6:
+                        printf("---Grupo outros---\n");
+                        strcpy(aux,"OUTROS");
+                        mostrarGrupo(&ag, aux);
+                        system("pause");
+                        break;
 
                     default:
                         printf("Escolha Invalida\n");
@@ -312,6 +340,34 @@ mostrarTodos(CONTATO *ag){
         }
     }
     system("pause");
+
+}
+ordenarContatos(CONTATO *ag, int lim){
+    char AUX[15];
+    int aux;
+
+for(int i=1;i<lim;i++){
+    if(ag[i].ativo==1){
+        for(int j=1;j<lim;j++){
+        if(strcmp(ag[j-1].nome,ag[j].nome) > 0){
+            strcpy(AUX,ag[j-1].nome);
+            strcpy(ag[j-1].nome,ag[j].nome);
+            strcpy(ag[j].nome,AUX);
+            //numeros
+            aux = ag[j-1].numero;
+            ag[j-1].numero = ag[j].numero;
+            ag[j].numero= aux;
+            //grupos------
+            strcpy(AUX,ag[j-1].grupo);
+            strcpy(ag[j-1].grupo,ag[j].grupo);
+            strcpy(ag[j].grupo,AUX);
+        }
+        }
+
+    }
+}
+
+
 
 }
 main(){
