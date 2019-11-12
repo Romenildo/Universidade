@@ -18,7 +18,7 @@ menu(){
     puts("|-------------------------------------------------------|");
     puts(" 1-Adicionar contato  |   5-Mostrar contatos por grupo ");
     puts(" 2-Editar contato     |   6-Mostrar todos os contatos  ");
-    printf(" 3-Remover contato    |   7-Quantidade de contatos = %d \n",lim);
+    printf(" 3-Remover contato    |   *Quantidade de contatos = %d \n",lim);
     puts(" 4-Procurar contato   |   0- Sair                      ");
     puts("|-------------------------------------------------------|");
     scanf("%d",&op);
@@ -55,10 +55,11 @@ menu(){
                 printf("\n AGENDA VAZIA");
                 system("pause");
             }
-            
+
         case 4:
             if(on ==1){
                 procurarContato(&ag);
+                break;
             }else{
                 printf("AGENDA VAZIA\n");
                 break;
@@ -117,7 +118,7 @@ adicionarContato(){
 }
 editarContato(CONTATO *ag){
     char AuxProcurar[15],AuxUpr[15],aux[2][15];
-    int num;
+    int num,x;
     printf("Editar contato\n");
     printf("Nome:");gets(AuxProcurar);
     for(int i=0;i<MAX_AL;i++){
@@ -125,7 +126,7 @@ editarContato(CONTATO *ag){
             strcpy(AuxUpr,ag[i].nome);
             strupr(AuxUpr);
             strupr(AuxProcurar);
-            if(strcmp(AuxUpr,AuxProcurar)==0){
+            if(strstr(AuxUpr,AuxProcurar)!=NULL){
 
                 printf("%s : = ",ag[i].nome);gets(aux[0]);
                 setbuf(stdin,NULL);
@@ -137,21 +138,26 @@ editarContato(CONTATO *ag){
                 strcpy(ag[i].nome,aux[0]);
                 ag[i].numero = num;
                 strcpy(ag[i].grupo,aux[1]);
-
-            }else{
-                printf("Nome não Encontrado na agenda\n");
+                x=0;
+                printf("Editado com Sucesso!!!\n");
                 system("pause");
                 break;
+            }else
+                x=1;//se nao encontrar o nome
             }
-        }else
+        else
             break;
+    }
+    if(x){
+        printf("Aluno Nao encontrado");
+        system("pause");
     }
 
 }
 
 removerAluno(CONTATO *ag){
         char AuxProcurar[15],AuxUpr[15];
-    int num,aux=100;
+    int num,aux=100,x=0;
     printf("remover contato\n");
     printf("Nome:");gets(AuxProcurar);
     for(int i=0;i<MAX_AL;i++){
@@ -159,24 +165,30 @@ removerAluno(CONTATO *ag){
             strcpy(AuxUpr,ag[i].nome);
             strupr(AuxUpr);
             strupr(AuxProcurar);
-            if(strcmp(AuxUpr,AuxProcurar)== 0){
+            if(strstr(AuxUpr,AuxProcurar)!= NULL){
                 aux = i;
+                printf("Removido com sucesso\n");
+                x=0;
                 break;
             }
             else{
-                printf("Aluno Não Encontrado!!!");
-                break;
+                x=1;
             }
 
-
        }
+
+    }
+    if(x){
+        printf("Aluno Nao encontrado\n");
     }
     ag[aux].ativo=0;
+    system("pause");
+
 }
 
 procurarContato(CONTATO *ag){
 char AuxProcurar[15],AuxUpr[15];
-    int num,aux=100;
+    int num,x=0;
     printf("Procurar contato\n");
     printf("Nome:");gets(AuxProcurar);
     for(int i=0;i<MAX_AL;i++){
@@ -184,20 +196,23 @@ char AuxProcurar[15],AuxUpr[15];
             strcpy(AuxUpr,ag[i].nome);
             strupr(AuxUpr);
             strupr(AuxProcurar);
-            if(strcmp(AuxUpr,AuxProcurar)== 0){
-                        printf("%s\n",ag[i].nome);
+            if(strstr(AuxUpr,AuxProcurar)!= NULL){
+                    printf("%s\n",ag[i].nome);
                     printf("%d\n",ag[i].numero);
                     printf("%s\n",ag[i].grupo);
-
-            }else{
-                printf("COntato nao Enncontrado");
-            }
-
-
+                    x=0;
+                    break;
+            }else
+                x=1;
 
 }
     }
+    if(x){
+        printf("Aluno nao encontrado");
+    }
+    system("pause");
 }
+
 
 mostrarTodos(CONTATO *ag){
 
