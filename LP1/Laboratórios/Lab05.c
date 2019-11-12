@@ -11,29 +11,37 @@ typedef struct{
 }CONTATO;
 CONTATO ag[MAX_AL];
 
+pausa(){
+    system("pause");
+}
 menu(){
-    int op,lim=0,on=0;
-    do{
-    system("cls");
-    puts("|-------------------------------------------------------|");
-    puts(" 1-Adicionar contato  |   5-Mostrar contatos por grupo ");
-    puts(" 2-Editar contato     |   6-Mostrar todos os contatos  ");
-    printf(" 3-Remover contato    |   *Quantidade de contatos = %d \n",lim);
-    puts(" 4-Procurar contato   |   0- Sair                      ");
-    puts("|-------------------------------------------------------|");
-    scanf("%d",&op);
-    setbuf(stdin,NULL);
-    switch(op){
+    int op,op2,lim=0,on=0;
 
-        case 1:
-            if(lim<=50){
-                adicionarContato();
-                lim++;
-                on = 1;
-                break;
-            }else{
-                printf("\nAgenda cheia!!\n");
-                break;
+    do{
+        if(lim==0)
+         on = 0;//conição quando remover todos os contados ele voltar a mostrar agenda vazia
+        //--------------------------------------------------------------------
+        system("cls");
+        puts("|-------------------------------------------------------|");
+        puts(" 1-Adicionar contato  |   5-Mostrar contatos por grupo ");
+        puts(" 2-Editar contato     |   6-Mostrar todos os contatos  ");
+        printf(" 3-Remover contato    |   *Quantidade de contatos = %d/50\n",lim);
+        puts(" 4-Procurar contato   |   0- Sair                      ");
+        puts("|-------------------------------------------------------|");
+        scanf("%d",&op);
+        setbuf(stdin,NULL);
+        switch(op){
+
+            case 1:
+                if(lim<=50){
+                    adicionarContato();
+                    lim++;
+                    on = 1;
+                    break;
+                }else{
+                    printf("\nAgenda cheia!!\n");
+                    system("pause");
+                    break;
             }
 
         case 2:
@@ -47,8 +55,7 @@ menu(){
             }
         case 3:
             if(on == 1){
-                removerAluno(&ag);
-                lim--;
+                removerAluno(&ag,&lim);
                 break;
 
             }else{
@@ -65,6 +72,44 @@ menu(){
                 break;
             }
 
+        case 5:
+            if(on == 1){
+                system("cls");
+                puts("---Grupos---");
+                puts("1-FAMILIA  2-AMIGOS 3-FAMILIA");
+                puts("4- ESTUDOS 5-COLEGAS 6-OUTROS");
+                printf("digite: ");scanf("%d",&op2);
+                setbuf(stdin,NULL);
+                char aux[15];
+                switch(op2){
+                    case 1:
+                        printf("---Grupo Familia---");
+                        strcpy(aux,"FAMILIA");
+                        mostrarGrupo(&ag, aux);
+                        system("pause");
+                        break;
+
+                    case 2:
+
+                    case 3:
+
+                    case 4:
+
+                    case 5:
+
+                    case 6:
+
+                    default:
+                        printf("Escolha Invalida\n");
+                        system("pause");
+                }
+
+
+            break;
+            }else{
+                printf("Todos os Grupos estao vazios");
+                break;
+            }
         case 6:
             if(on == 1){
             mostrarTodos(&ag);
@@ -89,6 +134,44 @@ menu(){
 
 }
 
+void mostrarGrupo(CONTATO *ag, char aux[15]){
+    int x=1;
+    for(int i=0;i<MAX_AL;i++){
+        if(ag[i].ativo==1){
+            if(strstr(ag[i].grupo,aux)!= NULL){
+                printf("%s\n",ag[i].nome);
+                printf("%d\n",ag[i].numero);
+                printf("%s\n",ag[i].grupo);
+                printf("-----------------\n");
+                x=0;
+            }
+        }
+    }
+    if(x){
+        printf("NAO HA CONTATOS NESSE GRUPO\n");
+    }
+}
+verificarGrupo(char grupo[LIM]){
+    strupr(grupo);
+    if(strstr(grupo,"FAMILIA")!=NULL){
+        return "FAMILIA";
+    }
+     if(strstr(grupo,"AMIGOS")!=NULL){
+        return "AMIGOS";
+    }
+     if(strstr(grupo,"TRABALHO")!=NULL){
+        return "TRABALHO";
+    }
+     if(strstr(grupo,"ESTUDOS")!=NULL){
+        return "ESTUDOS";
+    }
+     if(strstr(grupo,"COLEGAS")!=NULL){
+        return "COLEGAS";
+    }
+    else
+        return "OUTROS";
+
+}
 
 adicionarContato(){
     char nome[LIM];
@@ -100,11 +183,10 @@ adicionarContato(){
     setbuf(stdin,NULL);
     printf("nome:");
     gets(nome);
-
     setbuf(stdin,NULL);
     puts("Grupos: FAMILIA  AMIGOS  TRABALHO\n        ESTUDOS  COLEGAS e OUTROS");
     printf("grupo: ");gets(grupo);
-    strupr(grupo);
+    strcpy(grupo,verificarGrupo(grupo));
     //comparar grupos
     for(int i=0;i<MAX_AL;i++){
         if(ag[i].ativo == 0){
@@ -115,10 +197,13 @@ adicionarContato(){
         break;
         }
     }
+    system("cls");
+    printf("\n\n\n\t %s ADICIONADO COM SUCESSO!!!\n\n\n",strupr(nome));
+    system("pause");
 }
 editarContato(CONTATO *ag){
-    char AuxProcurar[15],AuxUpr[15],aux[2][15];
-    int num,x;
+    char AuxProcurar[15],AuxUpr[15],NOME[15],GRUPO[15];
+    int aux=0,x;
     printf("Editar contato\n");
     printf("Nome:");gets(AuxProcurar);
     for(int i=0;i<MAX_AL;i++){
@@ -128,16 +213,17 @@ editarContato(CONTATO *ag){
             strupr(AuxProcurar);
             if(strstr(AuxUpr,AuxProcurar)!=NULL){
 
-                printf("%s : = ",ag[i].nome);gets(aux[0]);
+                printf("Nome: %s => ",ag[i].nome);gets(NOME);
                 setbuf(stdin,NULL);
-                printf("%d : = ",ag[i].numero);scanf("%d",num);
+                printf("N: %d => ",ag[i].numero);scanf("%d",&aux);
                 setbuf(stdin,NULL);
-                puts("Grupos: FAMILIA  AMIGOS  TRABALHO\n        ESTUDOS  COLEGAS e OUTROS");
-                printf("%s : = ",ag[i].grupo);gets(aux[1]);strupr(aux[1]);
+                printf("Grupos: FAMILIA  AMIGOS  TRABALHO\n        ESTUDOS  COLEGAS e OUTROS\n");
+                printf("Grupo: %s => ",ag[i].grupo);gets(GRUPO);
+                strcpy(GRUPO,verificarGrupo(GRUPO));
 
-                strcpy(ag[i].nome,aux[0]);
-                ag[i].numero = num;
-                strcpy(ag[i].grupo,aux[1]);
+                strcpy(ag[i].nome,NOME);
+                ag[i].numero = aux;
+                strcpy(ag[i].grupo,GRUPO);
                 x=0;
                 printf("Editado com Sucesso!!!\n");
                 system("pause");
@@ -155,7 +241,7 @@ editarContato(CONTATO *ag){
 
 }
 
-removerAluno(CONTATO *ag){
+removerAluno(CONTATO *ag, int *lim){
         char AuxProcurar[15],AuxUpr[15];
     int num,aux=100,x=0;
     printf("remover contato\n");
@@ -167,6 +253,7 @@ removerAluno(CONTATO *ag){
             strupr(AuxProcurar);
             if(strstr(AuxUpr,AuxProcurar)!= NULL){
                 aux = i;
+                *lim=*lim-1;
                 printf("Removido com sucesso\n");
                 x=0;
                 break;
