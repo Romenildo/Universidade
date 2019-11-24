@@ -28,6 +28,21 @@
 # **Laboratório 06**
 
 ![lab6](https://github.com/Romenildo/Universidade/blob/master/Algoritmo/Projeto%20final/imagens%20%F0%9F%93%B8/Lab_06.png)
+🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹
+
+# **Laboratório 07**
+
+![lab7](https://github.com/Romenildo/Universidade/blob/master/Algoritmo/Projeto%20final/imagens%20%F0%9F%93%B8/lab07.JPG)
+🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹 
+
+# **Laboratório 08**
+
+![lab8](https://github.com/Romenildo/Universidade/blob/master/Algoritmo/Projeto%20final/imagens%20%F0%9F%93%B8/lab08.JPG)
+🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹 
+
+# **Laboratório 09**
+
+![lab9](https://github.com/Romenildo/Universidade/blob/master/Algoritmo/Projeto%20final/imagens%20%F0%9F%93%B8/lab09.JPG)
 🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹 
 
 
