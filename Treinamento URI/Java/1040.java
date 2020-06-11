@@ -3,10 +3,6 @@ import java.util.Scanner;
 
 public class Main{
 	
-	static double media(double n1, double n2, double n3, double n4) {
-		double mediaP = (n1*2 + n2*3 + n3*4 + n4*1)/10;
-		return mediaP;
-	}
 	
 	public static void main(String[] args) {
 		Locale.setDefault(Locale.US);
@@ -16,8 +12,8 @@ public class Main{
 		double nota2 = scan.nextDouble();
 		double nota3 = scan.nextDouble();
 		double nota4 = scan.nextDouble();
-		double mediaF = media(nota1, nota2, nota3, nota4);
-		System.out.printf("Media: %.1f\n",mediaF);
+		double mediaF = (nota1*2 + nota2*3 + nota3*4 + nota4*1)/10;
+		System.out.printf("Media: %.1f\n",(float)mediaF);
 		if(mediaF >= 7.0) {
 			System.out.println("Aluno aprovado.");
 		}else {
