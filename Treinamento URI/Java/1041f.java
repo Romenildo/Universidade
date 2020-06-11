@@ -42,7 +42,7 @@ public class Main{
 			return true;
 		}
 		if(x<0 && y<0) {
-			System.out.println("Q1");
+			System.out.println("Q3");
 			return true;
 		}
 		return false;
@@ -64,6 +64,6 @@ public class Main{
 		if(quadrantes(x,y)) {
 			return;
 		}
-		
+		scan.close();
 	}
 }
