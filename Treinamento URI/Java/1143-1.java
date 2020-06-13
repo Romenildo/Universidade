@@ -24,7 +24,7 @@ public class Main{
 				elevado++;
 				
 			}
-			System.out.printf("%d %d %d \n", resultado1, resultado2, resultado3);
+			System.out.printf("%d %d %d\n", resultado1, resultado2, resultado3);
 			elevado=1;
 			nume++;
 			
