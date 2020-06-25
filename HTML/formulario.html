@@ -1,1 +1,89 @@
+<!doctype html>
 
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Formulario</title>
+	</head>
+
+	<body bgcolor="darkgreen" text="white ">
+		<center>
+		<font size="4" face="Arial">
+		<h1>Fomulário</h1>
+		<p>informe todos os dados a seguir</p>
+
+		<form action ="" method="post" enctype="multipart/form-data">
+			
+			<div>
+				<label for="">Nome: </label>
+				<input type="text" name="nome" placeholder="Digite..." required="required" >
+			</div>
+
+			<div>
+				<br>
+				<label for="">Email: </label>
+				<input size="40" type="email" name="email" placeholder="Digite..." required="required" >
+			</div>
+
+			<div>
+				<br>
+				<label for="">Seleciona seu Estado: </label>
+
+				<select required="required" nome="estado">
+					<option selected="selected" value="">Seleciona</option>
+					<option value="1"> São Paulo </option>
+					<option value="2"> Recife </option>
+					<option value="3"> Paraiba </option>
+					<option value="4"> Pernambuco </option>
+				</select>
+			</div>
+
+			<div>
+				<br>
+				<label for="">Sua Foto: </label>
+				<input required="required" type="file" name="foto">
+
+			</div>
+
+			<div>
+				<br>
+				<label for="">Sexo: </label><br>
+				<label for="r1"><input required="required" type="radio" value="m" id="r1"name="sexo">Masculino</label>
+				<label for="r2"><input required="required" type="radio" value="f" id="r2"name="sexo">Feminino</label>
+			</div>
+
+			<div>
+				<br>
+				<label for="">Biografia: </label>
+				<textarea name="biografia"  required="required" cols="70" rows="15" >
+					
+
+				</textarea>
+
+			</div>
+
+			<div>
+				<br>
+				<label for="">Senha: </label>
+				<input type="password" name="senha" required="required" >
+			</div>
+
+			<div>
+				<br>
+				<label for="form">
+				<input type="checkbox" id="form"checked="checked" name="box" required="required" >Deseja Receber Email promocionais: </label>
+			</div>
+
+			<div>
+				<br>
+				
+				<button type="submit" name="enviar" value="1"  >Enviar </button>
+			</div>
+
+
+		</form>
+		</center>
+		</font>
+	</body>
+</html>
