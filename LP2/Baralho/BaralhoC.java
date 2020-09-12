@@ -62,7 +62,7 @@ public class Baralho {
 				return aux;
 			}
 		}
-		return null;
+		return "baralho Vazio";
 	}
 	
 	public boolean temCarta() {
