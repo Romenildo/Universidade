@@ -1,1 +1,111 @@
+body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 
+}
+
+.container{
+    padding: 0px 0px;
+    display: grid;
+    grid-template-rows: 10vh 90vh;/*2 linhas com alturas diferentes*/
+    grid-gap: 2px 2px;/*espaçamento entre as boxs*/
+    grid-template-areas: "h"
+                         "m"
+}
+
+
+header{
+	background-color: gray;
+    grid-area: h;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+main{
+    grid-area: m;
+    display: flex;
+
+}
+
+.logo{
+    color: white;
+    margin: auto 6vw;
+    font-size: 26px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.login .element{
+    display: inline-block;
+}
+.element p{
+    color: inherit;
+    font-size: 18px;
+    position: relative;
+    left: 5px;
+    margin: 15px 0px 15px -5px;
+}
+.element input[type="text"],
+.element input[type="password"]{
+    position: relative;
+    bottom: 13px;
+    padding: 5px;
+}
+.element input[type="text"]:hover,
+.element input[type="password"]:hover{
+    border: 4px solid;
+    border-color: green;
+}
+.element input[type="button"]{
+    background-color: white;
+    cursor: pointer;
+    width: 80px;
+    height: 30px;
+    position: relative;
+    bottom: 14px;
+}
+.element input[type="button"]:hover{
+    background-color: gray;
+}
+
+main p{
+    padding: 0 5vw;
+    text-indent: 100px;  
+    font-size: 18px;
+    font-family: sans-serif;
+    
+}
+.texto{/*main*/
+    text-align: center;
+    position: relative;
+    top: 30px;
+
+}
+.citacao{
+	padding-left: 50%;
+}
+
+img{
+	width: 350px;
+	height: 300px;
+	margin-top: 15%;
+}
+
+.tooltip {
+    top: 47px;
+    width: 350px;
+    font-size: 100%;
+
+    color: red;
+    padding: 5px;
+    text-align: left;
+}
+
+.tooltip {
+    visibility: hidden;
+    pointer-events: none;
+    position: absolute;
+    z-index: 20;
+}
