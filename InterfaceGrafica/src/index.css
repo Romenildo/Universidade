@@ -1,0 +1,122 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
+  background-color: white;
+}
+
+.header{
+  background-color: gray;
+  display: flex;
+}
+
+.header-logo{
+  width: 50%;
+  flex-direction: row;
+  display: flex;
+}
+.header-logo p{
+  color: white;
+  margin-top: 30px;
+  margin-left: 40px;
+  font-size: 26px;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.header-form{
+  width: 50%;
+  text-align: right;
+  margin: 0 20px;
+  display: flex;
+}
+
+.header-form .element{
+  margin-right:5px ;
+}
+
+.element p{
+  color: inherit;
+  font-size: 18px;
+  position: relative;
+
+  margin: 15px 110px 15px -5px;
+}
+.element input[type="text"],
+.element input[type="password"]{
+  position: relative;
+  bottom: 13px;
+  padding: 5px;
+}
+.element input[type="text"]:hover,
+.element input[type="password"]:hover{
+  border: 2px solid;
+  border-color: green;
+}
+.element input[type="button"]{
+  margin-top: 50px;
+  background-color: white;
+  cursor: pointer;
+  width: 80px;
+  height: 30px;
+  position: relative;
+  bottom: 14px;
+}
+.element input[type="button"]:hover{
+  background-color: gray;
+}
+
+.main{
+  display: flex;
+}
+
+.texto-principal{
+  padding: 0 10px;
+  margin: 8px;
+  text-indent: 100px;  
+
+  
+}
+.texto{/*main*/
+  text-align: center;
+  position: relative;
+  top: 30px;
+  font-size: 16px;
+  font-family: sans-serif;
+}
+
+.citacao{
+  padding-left: 50%;
+}
+.img_text{
+  font-size: 14px;
+  text-align: right;
+  margin-left: 140px;
+  
+}
+
+img{
+  width: 350px;
+  height: 300px;
+  margin-top: 15%;
+}
+
+
+.hiden{
+  display: none;
+}
+.shoyo{
+  display: block;
+  top: 60px;
+  width: 350px;
+  font-size: 90%;
+
+  color: red;
+  padding: 5px;
+  text-align: left;
+  position: absolute;
+  z-index: 20;
+}
