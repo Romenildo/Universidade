@@ -54,8 +54,8 @@ export default class Header extends React.Component{
                 <div className="element">
                     <input className="input" onClick={(e) => this.buttonClick(e)} type="button" value="login"></input>
                 </div>
-                <div   className={this.setClass}>
-                    <p>Preencha todos os campos{state}</p>
+                <div   className="shoyo">
+                    <p>Preencha todos os campos</p>
                 </div>
             </div>
     
