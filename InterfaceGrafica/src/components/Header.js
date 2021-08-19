@@ -1,10 +1,13 @@
 import React from "react";
 
+
+
+
 export default class Header extends React.Component{
 
     constructor(props){
         super(props);
-        
+
         
         this.usuario = null;
         this.senha = null;
@@ -13,28 +16,23 @@ export default class Header extends React.Component{
         this.setSenha = element => {this.senha = element};  
         this.setClass = element =>{this.class = element}
     }
+    
 
-    state={
-        classe:" "
-    }
-    alterar = e =>{
-        this.setState({[e.target.classe]:e.target.value})
-    }
 
     buttonClick = (e) =>{
         e.preventDefault();
+        
 
         if(this.usuario.value == ""){
-           onchange={this.alterar}
+            alert("Sem usuario")
         }
         if(this.senha.value == ""){
-            alert("Caralhou")
+            alert("Sem Senha")
         }
 
         if(this.usuario.value != "" && this.senha.value != ""){
             alert("Login para o "+this.usuario.value+" efetuado com sucesso!")
         }
-        
     }
 
     render(){
@@ -56,8 +54,8 @@ export default class Header extends React.Component{
                 <div className="element">
                     <input className="input" onClick={(e) => this.buttonClick(e)} type="button" value="login"></input>
                 </div>
-                <div   className={this.classe}>
-                    <p>Preencha todos os campos</p>
+                <div   className={this.setClass}>
+                    <p>Preencha todos os campos{state}</p>
                 </div>
             </div>
     
