@@ -1,9 +1,7 @@
 import React from 'react';
-import { Formik, Field, ErrorMessage } from 'formik'
+import { Formik, Field, ErrorMessage } from 'formik';
 
 const Formulario = () => {
-
-    //validarCampo
     const validarCampo = (value) =>{
         let error;
         if(!value){
@@ -28,7 +26,7 @@ const Formulario = () => {
         if(!value){
             error = "*Campo Obrigatorio"
         }
-        if(value.length!=14 || value[3]!="." || value[7]!="."||value[11]!="-"){
+        if(value.length!==14 || value[3]!=="." || value[7]!=="."||value[11]!=="-"){
             error ="Formato Invalido"
         }
         return error;
@@ -39,7 +37,7 @@ const Formulario = () => {
         if(!value){
             error = "*Campo Obrigatorio"
         }
-        if(value.length!=9){
+        if(value.length!==9){
             error ="Formato Invalido"
         }
         return error;
@@ -50,11 +48,25 @@ const Formulario = () => {
         if(!value){
             error = "*Campo Obrigatorio"
         }
-        if(value.length!=9 || value[5]!="-"){
+        if(value.length!==9 || value[5]!=="-"){
             error ="Formato Invalido"
         }
         return error;
     }
+    const estadosUF= ["RO","AC","AM","RR","PA","AP","TO","MA","PI","CE","RN","PB","PE","AL",
+                      "SE","BA","MG","ES","RJ","SP","PR","SC","RS","MS","MT","GO","DF"];
+    const validarEstado = (value)=>{
+        let error;
+        if(!value){
+            error = "*Campo Obrigatorio"
+        }else{
+            if(!estadosUF.includes(value)){
+                error="UF não encontrada"
+            }
+        }
+        return error;
+    }
+    
     
     const handleSubmitting = (values, {setSubmitting}) =>{
         setTimeout(() =>{
@@ -171,11 +183,11 @@ const Formulario = () => {
                     <label>
                         Estado:
                             <Field type="text" name ="estado"
-                                validate={validarCampo}
-                                onBlur = {handleBlur}
-                                onChange={handleChange}
-                            />  
-                            <ErrorMessage name ="estado"/> 
+                                    validate={validarEstado}
+                                    onBlur = {handleBlur}
+                                    onChange={handleChange}
+                                />  
+                                <ErrorMessage name ="estado"/> 
                     </label>
                     <br/>
                     <label>
