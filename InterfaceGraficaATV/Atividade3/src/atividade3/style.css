@@ -1,24 +1,69 @@
-.body{
-    margin: 0;/definir margin e padding em 0 como padrão caso o navegador seja diferente/
+*{
+    margin: 0;
     padding: 0;
-    background-image: linear-gradient(to right, #f83600 0%, #f9d423 100%);/Plano de fundo com gradiente/
-    background-size: cover;/tamanho da tela de fundo cover(cobrindo)/
+}
+.body{
+    margin: 0;/*definir margin e padding em 0 como padrão caso o navegador seja diferente*/
+    padding: 0;
+    background: #72757c;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #D7DDE8, #787e8d);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #D7DDE8, #737885); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
     font-family: "Comfortaa", sans-serif;
     height: 100vh;
     width: 100vw;
 }
 
-.formulario{/box da div de login/
-    width: 420px;/largura da box do login/
-    height: 520px;/altura da box de login/
-    /border: 2px solid rgb(89, 255, 241);//borda da box de login largura de 2px style:solid e cor rgb/
-    border-radius: 80px;/deixar a box curvada/
-    color:rgb(255, 255, 255);/cor do texto da box/
-    background-color: rgba(0, 0, 0, 0.514);/cor de fundo da box/
-    position: relative;/modelo do layout/
-    top: 120px;/posicao a partir do topo até +400px/
-    left: 520px;/posicao a partir da esquerda até +200px a direita/
-    box-sizing: border-box;/define a box com o border box/
-    padding: 68px 40px;/distancia entre o texto e a borda/
+.formulario{
+    border-radius: 20px;
+    background-color: rgb(255, 255, 255);
+    position: relative;
+    top: 50px;
+    left: 520px;
+    padding: 80px 40px;
+    width: 500px;
+    height: 400px;
+}
 
+label, input{
+    margin: 0;
+    padding: 0;
+    margin: 4px;
+    
+}
+
+.Titulo{
+    margin: -10px;
+    top: -37px;
+    color: rgb(115, 115, 143);
+    font-size: 50px;
+    display: block;
+    position: relative;
+    border-bottom: 206px;
+    text-align: center;
+    font-weight: bold;
+    text-shadow: rgb(175, 175, 175) 0.1em 0.1em 0.2em
+}
+.subtitulo{
+    text-align: center;
+    color: rgb(212, 58, 58);
+    position: relative;
+    left: 50%;
+    top: -20px;
+}
+.botao{
+    color: rgb(115, 115, 143);
+    font-size: 25px;
+    padding: 5px;
+    display: block;
+    position: relative;
+    font-weight: bold;
+    text-shadow: rgb(175, 175, 175) 0.1em 0.1em 0.2em;
+    left: 40%;
+    top: -10px;
+    border: none;
+}
+
+.botao:hover{
+    cursor: pointer;
 }
