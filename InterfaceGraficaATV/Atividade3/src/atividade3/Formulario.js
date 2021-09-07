@@ -150,7 +150,7 @@ const Formulario = () => {
                     </label>
                     <br/>
                     <label>
-                        Endereco:
+                        Endereco*:
                             <Field type="text" name ="endereco"
                                 validate={validarCampo}
                                 onBlur = {handleBlur}
