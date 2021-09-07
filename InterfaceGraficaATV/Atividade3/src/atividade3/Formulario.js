@@ -15,10 +15,12 @@ const Formulario = () => {
         let error;
         if(!value){
             error = "*Campo Obrigatorio"
+        }else{
+            if(value < 16){
+                error = "Somente maiores de 16 anos"
+            }
         }
-        if(value < 16){
-            error = "Somente maiores de 16 anos"
-        }
+        
         return error;
     }
     const validarCPF = (value)=>{
@@ -26,10 +28,12 @@ const Formulario = () => {
         
         if(!value){
             error = "*Campo Obrigatorio"
+        }else{
+            if(value.length!==14 || value[3]!=="." || value[7]!=="."||value[11]!=="-"){
+                error ="Formato Invalido"
+            }
         }
-        if(value.length!==14 || value[3]!=="." || value[7]!=="."||value[11]!=="-"){
-            error ="Formato Invalido"
-        }
+        
         return error;
     }
     const validarMatricula = (value)=>{
@@ -37,10 +41,12 @@ const Formulario = () => {
 
         if(!value){
             error = "*Campo Obrigatorio"
+        }else{
+            if(value.length!==9){
+                error ="Formato Invalido"
+            }
         }
-        if(value.length!==9){
-            error ="Formato Invalido"
-        }
+        
         return error;
     }
     const validarCEP = (value)=>{
@@ -48,10 +54,12 @@ const Formulario = () => {
 
         if(!value){
             error = "*Campo Obrigatorio"
+        }else{
+            if(value.length!==9 || value[5]!=="-"){
+                error ="Formato Invalido"
+            }
         }
-        if(value.length!==9 || value[5]!=="-"){
-            error ="Formato Invalido"
-        }
+        
         return error;
     }
     const estadosUF= ["RO","AC","AM","RR","PA","AP","TO","MA","PI","CE","RN","PB","PE","AL",
@@ -82,6 +90,14 @@ const Formulario = () => {
                  onSubmit ={handleSubmitting}>
             {({values, handleChange, handleSubmit,handleBlur, isSubmitting}) => (
                 <form onSubmit={handleSubmit}>
+                    <label className="Titulo">
+                        Formulário
+                    </label>
+                    <br/>
+                    <label className="subtitulo">
+                        Campos com (*) são obrigatorios.
+                    </label>
+                    <br/>
                     <label className="nome">
                         Nome Completo*:
                             <Field type="text" name ="nome"
@@ -172,7 +188,7 @@ const Formulario = () => {
                     </label>
                     <br/>
                     <label>
-                        Cidade:
+                        Cidade*:
                             <Field type="text" name ="cidade"
                                 validate={validarCampo}
                                 onBlur = {handleBlur}
@@ -182,7 +198,7 @@ const Formulario = () => {
                     </label>
                     <br/>
                     <label>
-                        Estado:
+                        Estado*:
                             <Field type="text" name ="estado"
                                     validate={validarEstado}
                                     onBlur = {handleBlur}
@@ -192,7 +208,7 @@ const Formulario = () => {
                     </label>
                     <br/>
                     <label>
-                        CEP:
+                        CEP*:
                             <Field type="text" name ="cep"
                                 validate={validarCEP}
                                 onBlur = {handleBlur}
@@ -202,7 +218,7 @@ const Formulario = () => {
                     </label>
                     <br/>
                     <label>
-                        <input type="submit" value="Login" disabled={isSubmitting}/>   
+                        <input className="botao" type="submit" value="Login" disabled={isSubmitting}/>   
                     </label>
                 </form>
             )}
