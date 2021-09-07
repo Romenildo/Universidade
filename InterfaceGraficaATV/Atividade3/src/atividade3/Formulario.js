@@ -30,7 +30,7 @@ const Formulario = () => {
             error = "*Campo Obrigatorio"
         }else{
             if(value.length!==14 || value[3]!=="." || value[7]!=="."||value[11]!=="-"){
-                error ="Formato Invalido"
+                error ="Formato deve ser=> (000.000.000-00)"
             }
         }
         
@@ -43,7 +43,7 @@ const Formulario = () => {
             error = "*Campo Obrigatorio"
         }else{
             if(value.length!==9){
-                error ="Formato Invalido"
+                error ="Formato invalido"
             }
         }
         
@@ -56,7 +56,7 @@ const Formulario = () => {
             error = "*Campo Obrigatorio"
         }else{
             if(value.length!==9 || value[5]!=="-"){
-                error ="Formato Invalido"
+                error ="Formato deve ser 00000-000"
             }
         }
         
@@ -77,7 +77,7 @@ const Formulario = () => {
     }
     const handleSubmitting = (values, {setSubmitting}) =>{
         setTimeout(() =>{
-            console.info(JSON.stringify(values,null,12));
+            alert(JSON.stringify(values,null,12));
             setSubmitting(false);
         },1000);
     };
