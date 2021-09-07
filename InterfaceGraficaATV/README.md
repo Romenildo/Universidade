@@ -1,9 +1,9 @@
 
 # Alunos
-## Romenildo Do Vale Ferreira  / 
+ Romenildo Do Vale Ferreira  
  Dennis Eduardo Santos Da Silva
 
-#Apresentação
+# Apresentação
 * Validações da Página
  ![](https://github.com/Romenildo/Universidade/blob/master/InterfaceGraficaATV/imgs/image2.JPG)
 * Dados Corretos
