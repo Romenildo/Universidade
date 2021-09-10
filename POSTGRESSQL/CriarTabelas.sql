@@ -1,1 +1,7 @@
-a
+
+CREATE TABLE cidade (
+	codigo SERIAL PRIMARY KEY,
+	nome VARCHAR(30) NOT NULL,
+	estado VARCHAR(20) NOT NULL,
+	populacao INT NOT NULL
+);
