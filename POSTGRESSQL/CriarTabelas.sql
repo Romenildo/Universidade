@@ -7,7 +7,6 @@ CREATE TABLE cidade (
 
 CREATE TABLE Ponto_turistico(
 	cod_pt INT PRIMARY KEY;
-	tipo INT,
 	cod_cid INT,
 	FOREIGN KEY(cod_cid) REFERENCES cidade(codigo)
 );
@@ -15,9 +14,9 @@ CREATE TABLE Ponto_turistico(
 CREATE TABLE Igreja(
 	cod_igreja INT IDENTITY(1000,1) PRIMARY KEY,
 	cod_pt INT,
-	estilo-igreja VARCHAR(30),
-	desc_igreja TEXT,
-	data DATE,
+	estilo VARCHAR(30),
+	desc_igreja TEXT NULL,
+	data_const DATE ,
 	FOREIGN KEY(cod_pt)REFERENCES Ponto_turistico(cod_pt)
 );
 CREATE TABLE end_igreja(
@@ -31,9 +30,9 @@ CREATE TABLE end_igreja(
 CREATE TABLE Museu(
 	cod_museu INT IDENTITY(2000,1) PRIMARY KEY,
 	cod_pt INT,
-	data_fundacao DATE NOT NULL,
+	data_fundacao DATE NOTNULL,
 	num_salas SMALLINT,
-	desc_museu TEXT,
+	desc_museu TEXT NULL,
 	FOREIGN KEY(cod_pt)REFERENCES Ponto_turistico(cod_pt)
 );
 
@@ -45,12 +44,12 @@ CREATE TABLE end_museu(
 	FOREIGN KEY(cod_museu) REFERENCES Museu(cod_museu)
 );
 CREATE TABLE Fundador(
-	cod_fundador INT PRIMARY KEY,
-	nacionalidade_fund VARCHAR(40),
-	nome_fund VARCHAR(50) NOTNULL,
-	data_nasc_fund DATE,
-	data_morte_fund DATE,
-	atv_prof_fund TEXT
+	cod_fundador INT IDENTITY(9000,1) PRIMARY KEY,
+	nacionalidade VARCHAR(40),
+	nome VARCHAR(50) NOTNULL,
+	data_nasc DATE NOTNULL,
+	data_morte DATE NOTNULL,
+	atv_profissional  TEXT
 );
 CREATE TABLE Igreja_fundada_por_Fundador(
 	cod_museu INT,
@@ -60,11 +59,11 @@ CREATE TABLE Igreja_fundada_por_Fundador(
 );
 
 CREATE TABLE Casa_de_show(
-	cod_show INT PRIMARY KEY,
+	cod_show INT IDENTITY(3000,1)PRIMARY KEY,
 	cod_rest INT,
-	hor_abertura TIME,
+	hora_abertura TIME,
 	dia_fechamente VARCHAR(20),
-	desc_show TEXT,
+	descricao TEXT NULL,
 	cod_pt INT,
 	FOREIGN KEY(cod_pt)REFERENCES Ponto_turistico(cod_pt),
 	FOREIGN KEY(cod_rest) REFERENCES Restaurante(cod_rest),
@@ -78,8 +77,8 @@ CREATE TABLE end_show(
 );
 
 CREATE TABLE Restaurante(
-	cod_rest INT PRIMARY KEY,
-	nome_rest VARCHAR(50) NOTNULL,
+	cod_rest INT IDENTITY(4000,1) PRIMARY KEY,
+	nome VARCHAR(50) NOTNULL,
 	categoria VARCHAR(30),
 	especialidade VARCHAR(50),
 	preco_medio NUMERIC CHECK(preco_medio>0) NOT NULL,
@@ -95,9 +94,9 @@ CREATE TABLE end_rest(
 );
 
 CREATE TABLE Hotel(
-	cod_hotel INT PRIMARY KEY,
-	nome-hotel VARCHAR(50) NOTNULL,
-	categoria_hotel VARCHAR(30),
+	cod_hotel INT IDENTITY(5000,1) PRIMARY KEY,
+	nome VARCHAR(50) NOTNULL,
+	categoria VARCHAR(30),
 	cod_cid INT,
 	cod_rest INT,
 	FOREIGN KEY(cod_cid) REFERENCES Cidade(codigo),
