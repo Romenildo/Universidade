@@ -1,10 +1,10 @@
-
 CREATE TABLE cidade (
 	codigo SERIAL PRIMARY KEY,
 	nome VARCHAR(30) NOT NULL,
 	estado VARCHAR(20) NOT NULL,
 	populacao INT NOT NULL
 );
+
 CREATE TABLE Ponto_turistico(
 	cod_pt INT PRIMARY KEY;
 	tipo INT,
@@ -80,9 +80,9 @@ CREATE TABLE end_show(
 CREATE TABLE Restaurante(
 	cod_rest INT PRIMARY KEY,
 	nome_rest VARCHAR(50) NOTNULL,
-	categoria_rest VARCHAR(30),
-	especialidade_rest VARCHAR(50),
-	preco_medio_rest MONEY,
+	categoria VARCHAR(30),
+	especialidade VARCHAR(50),
+	preco_medio NUMERIC CHECK(preco_medio>0) NOT NULL,
 	cod_cid INT,
 	FOREIGN KEY(cod_cid) REFERENCES Cidade(codigo)
 );
@@ -95,7 +95,26 @@ CREATE TABLE end_rest(
 );
 
 CREATE TABLE Hotel(
-
+	cod_hotel INT PRIMARY KEY,
+	nome-hotel VARCHAR(50) NOTNULL,
+	categoria_hotel VARCHAR(30),
+	cod_cid INT,
+	cod_rest INT,
+	FOREIGN KEY(cod_cid) REFERENCES Cidade(codigo),
+	FOREIGN KEY(cod_rest) REFERENCES Restaurante(cod_rest)
 );
-
+CREATE TABLE end_hotel(
+	cod_hotel INT PRIMARY KEY,
+	rua VARCHAR(50),
+	bairro VARCHAR(50),
+	numero INT,
+	FOREIGN KEY(cod_hotel) REFERENCES Hotel(cod_hotel)
+);
+CREATE TABLE Quarto(
+	num_quarto INT PRIMARY KEY,
+	valor_diaria NUMERIC CHECK(valor_diaria > 0) NOTNULL,
+	tipo_quarto VARCHAR(20),
+	cod_hotel INT,
+	FOREIGN KEY (cod_hotel) REFERENCES Hotel(cod_hotel)
+);
 
