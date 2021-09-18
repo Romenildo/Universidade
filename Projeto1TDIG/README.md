@@ -1,6 +1,6 @@
 ## LINKS
 
-[Deploying React with Zero Configuration](https://blog.heroku.com/deploying-react-with-zero-configuration)
+[Deploying React with Zero Configuration](https://blog.heroku.com/deploying-react-with-zero-configuration)    
 [Colocar aplicação no heroku](https://www.luiztools.com.br/post/como-publicar-aplicacao-reactjs-na-heroku/)    
 [JTW token](https://www.youtube.com/watch?v=AClyxTbfI08)   
 [REACT ROUTER](https://www.youtube.com/watch?v=AClyxTbfI08)    
