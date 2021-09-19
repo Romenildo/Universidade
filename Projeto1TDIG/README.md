@@ -7,4 +7,8 @@
 [Instalar react router dom plugin](https://www.npmjs.com/package/react-router-dom)   
 [validacao dos formularios com yup ](https://bradhick.medium.com/yup-validações-no-react-de-uma-forma-muito-simples-700c039114e3)    
 
-[KOA](https://www.npmjs.com/package/koa)   
+[KOA](https://www.npmjs.com/package/koa)    
+
+## ERROS
+
+Consertar o sistema de API
