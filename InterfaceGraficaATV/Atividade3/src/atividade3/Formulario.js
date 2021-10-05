@@ -1,91 +1,39 @@
 import React from 'react';
 import { Formik, Field, ErrorMessage } from 'formik';
 import "./style.css";
+import * as Yup from 'yup';
 
 
 const Formulario = () => {
-    const validarCampo = (value) =>{
-        let error;
-        if(!value){
-            error = "*Campo Obrigatorio"
-        }
-        return error;
-    }
-    const validarIdade = (value)=>{
-        let error;
-        if(!value){
-            error = "*Campo Obrigatorio"
-        }else{
-            if(value < 16){
-                error = "Somente maiores de 16 anos"
-            }
-        }
-        
-        return error;
-    }
-    const validarCPF = (value)=>{
-        let error;
-        
-        if(!value){
-            error = "*Campo Obrigatorio"
-        }else{
-            if(value.length!==14 || value[3]!=="." || value[7]!=="."||value[11]!=="-"){
-                error ="Formato deve ser=> (000.000.000-00)"
-            }
-        }
-        
-        return error;
-    }
-    const validarMatricula = (value)=>{
-        let error;
-
-        if(!value){
-            error = "*Campo Obrigatorio"
-        }else{
-            if(value.length!==9){
-                error ="Formato invalido"
-            }
-        }
-        
-        return error;
-    }
-    const validarCEP = (value)=>{
-        let error;
-
-        if(!value){
-            error = "*Campo Obrigatorio"
-        }else{
-            if(value.length!==9 || value[5]!=="-"){
-                error ="Formato deve ser 00000-000"
-            }
-        }
-        
-        return error;
-    }
+    const LoginSchema = Yup.object().shape({
+         nome: Yup.string().required('Required'),
+         idade: Yup.number().required('Required').positive("idade >0"),
+         cpf: Yup.string().required('Required').matches(/^\d{3}\.\d{3}\.\d{3}\-\d{2}$/ , 'Formato CPF invalido'),
+         matricula: Yup.string().required('Required'),
+         curso: Yup.string().required('Required'),
+         endereco: Yup.string().required('Required'),
+         bairro: Yup.string().required('Required'),
+         cidade: Yup.string().required('Required'),
+         estado: Yup.string().required('Required').max(2,"Formato invalido").min(2,"formato invalido),
+         cep:Yup.string().required('Required').matches(/^\d{5}-\d{3}$/ , 'Formato CEP invalido'),
+    });
     const estadosUF= ["RO","AC","AM","RR","PA","AP","TO","MA","PI","CE","RN","PB","PE","AL",
                       "SE","BA","MG","ES","RJ","SP","PR","SC","RS","MS","MT","GO","DF"];
-    const validarEstado = (value)=>{
-        let error;
-        if(!value){
-            error = "*Campo Obrigatorio"
-        }else{
-            if(!estadosUF.includes(value)){
-                error="UF não encontrada"
-            }
-        }
-        return error;
-    }
-    const handleSubmitting = (values, {setSubmitting}) =>{
-        setTimeout(() =>{
-            alert(JSON.stringify(values,null,12));
-            setSubmitting(false);
-        },1000);
+    const handleSubmitting = (values, { setSubmitting, setStatus }) => {
+        setStatus({ isValidating: true });
+        setTimeout(() => {
+         console.info(JSON.stringify(values, null, 2));
+         setSubmitting(false);
+         setStatus({ isValidating: false });
+     }, 400);
     };
 
     return (
         <div className="body">
             <div className="formulario">
-            <Formik  initialValues ={{nome: '', idade:'', cpf: '', matricula:'', curso:'', endereco:'',
+            <Formik 
+                 validationSchema={LoginSchema}
+                 initialValues ={{nome: '', idade:'', cpf: '', matricula:'', curso:'', endereco:'',
                                   numeroEnd:'', complementoEnd:'', bairro:'', cidade:'', estado:'', cep:''}}
                  onSubmit ={handleSubmitting}>
             {({values, handleChange, handleSubmit,handleBlur, isSubmitting}) => (
@@ -101,7 +49,6 @@ const Formulario = () => {
                     <label className="nome">
                         Nome Completo*:
                             <Field type="text" name ="nome"
-                                validate={validarCampo}
                                 onBlur = {handleBlur}
                                 onChange={handleChange}
 
@@ -112,7 +59,6 @@ const Formulario = () => {
                     <label>
                         Idade*:
                             <Field type="text" name ="idade"
-                                validate={validarIdade}
                                 onBlur = {handleBlur}
                                 onChange={handleChange}
                             />  
@@ -122,7 +68,6 @@ const Formulario = () => {
                     <label>
                         CPF*:
                             <Field type="text" name ="cpf"
-                                validate={validarCPF}
                                 onBlur = {handleBlur}
                                 onChange={handleChange}
                             />  
@@ -132,7 +77,6 @@ const Formulario = () => {
                     <label>
                         Matricula*:
                             <Field type="text" name ="matricula"
-                                validate={validarMatricula}
                                 onBlur = {handleBlur}
                                 onChange={handleChange}
                             />  
@@ -142,7 +86,6 @@ const Formulario = () => {
                     <label>
                         Curso*:
                             <Field type="text" name ="curso"
-                                validate={validarCampo}
                                 onBlur = {handleBlur}
                                 onChange={handleChange}
                             />  
@@ -152,7 +95,6 @@ const Formulario = () => {
                     <label>
                         Endereco*:
                             <Field type="text" name ="endereco"
-                                validate={validarCampo}
                                 onBlur = {handleBlur}
                                 onChange={handleChange}
                             />  
@@ -180,7 +122,6 @@ const Formulario = () => {
                     <label>
                         Bairro*:
                             <Field type="text" name ="bairro"
-                                validate={validarCampo}
                                 onBlur = {handleBlur}
                                 onChange={handleChange}
                             />  
@@ -190,7 +131,6 @@ const Formulario = () => {
                     <label>
                         Cidade*:
                             <Field type="text" name ="cidade"
-                                validate={validarCampo}
                                 onBlur = {handleBlur}
                                 onChange={handleChange}
                             />  
@@ -200,7 +140,6 @@ const Formulario = () => {
                     <label>
                         Estado*:
                             <Field type="text" name ="estado"
-                                    validate={validarEstado}
                                     onBlur = {handleBlur}
                                     onChange={handleChange}
                                 />  
@@ -210,7 +149,6 @@ const Formulario = () => {
                     <label>
                         CEP*:
                             <Field type="text" name ="cep"
-                                validate={validarCEP}
                                 onBlur = {handleBlur}
                                 onChange={handleChange}
                             />  
