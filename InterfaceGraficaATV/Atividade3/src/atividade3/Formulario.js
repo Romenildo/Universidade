@@ -17,8 +17,6 @@ const Formulario = () => {
          estado: Yup.string().required('Required').max(2,"Formato invalido").min(2,"formato invalido),
          cep:Yup.string().required('Required').matches(/^\d{5}-\d{3}$/ , 'Formato CEP invalido'),
     });
-    const estadosUF= ["RO","AC","AM","RR","PA","AP","TO","MA","PI","CE","RN","PB","PE","AL",
-                      "SE","BA","MG","ES","RJ","SP","PR","SC","RS","MS","MT","GO","DF"];
     const handleSubmitting = (values, { setSubmitting, setStatus }) => {
         setStatus({ isValidating: true });
         setTimeout(() => {
